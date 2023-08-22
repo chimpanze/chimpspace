@@ -5,15 +5,18 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreDocumentRequest;
 use App\Http\Requests\UpdateDocumentRequest;
 use App\Models\Document;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Response;
 
 class DocumentController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(): JsonResponse
     {
-        //
+        $documents = Document::all();
+        return response()->json($documents);
     }
 
     /**
