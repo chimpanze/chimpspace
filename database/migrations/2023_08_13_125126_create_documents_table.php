@@ -15,7 +15,7 @@ return new class extends Migration
             $table->ulid();
             $table->timestamps();
             $table->softDeletesDatetime();
-            $table->foreignUlid('parent_document');
+            $table->foreignUlid('parent_document')->nullable();
             $table->string('title', '200');
         });
     }

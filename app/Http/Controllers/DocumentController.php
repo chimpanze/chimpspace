@@ -20,19 +20,17 @@ class DocumentController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreDocumentRequest $request)
+    public function store(StoreDocumentRequest $request): JsonResponse
     {
-        //
+        $values = $request->validated();
+        $document = new Document;
+        $document->title = $values['title'];
+        $document->parent_document = $values['parent_document'] ?? null;
+        $document->save();
+
+        return response()->json($document);
     }
 
     /**

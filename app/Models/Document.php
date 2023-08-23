@@ -11,8 +11,10 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Document extends Model
 {
-    use HasFactory;
     use HasUlids;
+
+    protected $fillable = ['title'];
+    protected $primaryKey = 'ulid';
 
     public function parentDocument(): BelongsTo
     {
