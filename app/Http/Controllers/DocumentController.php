@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreDocumentRequest;
 use App\Http\Requests\UpdateDocumentRequest;
+use App\Http\Resources\DocumentResource;
 use App\Models\Document;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -41,7 +42,7 @@ class DocumentController extends Controller
     public function show(Request $request, Document $document)
     {
         if ($request->user()->can('view', $document)) {
-            return response()->json($document);
+            return new DocumentResource($document);
         } else {
             abort(403);
         }

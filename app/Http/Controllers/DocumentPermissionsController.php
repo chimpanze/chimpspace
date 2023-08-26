@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreDocumentPermissionsRequest;
-use App\Http\Requests\UpdateDocumentPermissionsRequest;
-use App\Models\DocumentPermissions;
+use App\Http\Requests\StoreDocumentPermissionRequest;
+use App\Http\Requests\UpdateDocumentPermissionRequest;
+use App\Models\DocumentPermission;
 
 class DocumentPermissionsController extends Controller
 {
@@ -27,7 +27,7 @@ class DocumentPermissionsController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreDocumentPermissionsRequest $request)
+    public function store(StoreDocumentPermissionRequest $request)
     {
         //
     }
@@ -35,7 +35,7 @@ class DocumentPermissionsController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(DocumentPermissions $documentPermissions)
+    public function show(DocumentPermission $documentPermissions)
     {
         //
     }
@@ -43,7 +43,7 @@ class DocumentPermissionsController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(DocumentPermissions $documentPermissions)
+    public function edit(DocumentPermission $documentPermissions)
     {
         //
     }
@@ -51,7 +51,7 @@ class DocumentPermissionsController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateDocumentPermissionsRequest $request, DocumentPermissions $documentPermissions)
+    public function update(UpdateDocumentPermissionRequest $request, DocumentPermission $documentPermissions)
     {
         //
     }
@@ -59,7 +59,7 @@ class DocumentPermissionsController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(DocumentPermissions $documentPermissions)
+    public function destroy(DocumentPermission $documentPermissions)
     {
         //
     }

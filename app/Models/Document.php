@@ -16,7 +16,6 @@ class Document extends Model
 
     protected $fillable = ['title'];
     protected $primaryKey = 'ulid';
-    protected $with = ['documents'];
     protected $hidden = ['user_id'];
 
     public function parentDocument(): BelongsTo
@@ -31,11 +30,11 @@ class Document extends Model
 
     public function permissions(): HasMany
     {
-        return $this->hasMany(DocumentPermissions::class, 'document_id', 'ulid');
+        return $this->hasMany(DocumentPermission::class, 'document_id', 'ulid');
     }
 
     public function blocks(): HasMany
     {
-        return $this->hasMany(DocumentBlocks::class, 'document_id', 'ulid');
+        return $this->hasMany(DocumentBlock::class, 'document_id', 'ulid');
     }
 }

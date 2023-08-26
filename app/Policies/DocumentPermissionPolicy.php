@@ -2,11 +2,11 @@
 
 namespace App\Policies;
 
-use App\Models\DocumentPermissions;
+use App\Models\DocumentPermission;
 use App\Models\User;
 use Illuminate\Auth\Access\Response;
 
-class DocumentPermissionsPolicy
+class DocumentPermissionPolicy
 {
     /**
      * Determine whether the user can view any models.
@@ -19,7 +19,7 @@ class DocumentPermissionsPolicy
     /**
      * Determine whether the user can view the model.
      */
-    public function view(User $user, DocumentPermissions $documentPermissions): bool
+    public function view(User $user, DocumentPermission $documentPermissions): bool
     {
         //
     }
@@ -35,7 +35,7 @@ class DocumentPermissionsPolicy
     /**
      * Determine whether the user can update the model.
      */
-    public function update(User $user, DocumentPermissions $documentPermissions): bool
+    public function update(User $user, DocumentPermission $documentPermissions): bool
     {
         //
     }
@@ -43,7 +43,7 @@ class DocumentPermissionsPolicy
     /**
      * Determine whether the user can delete the model.
      */
-    public function delete(User $user, DocumentPermissions $documentPermissions): bool
+    public function delete(User $user, DocumentPermission $documentPermissions): bool
     {
         //
     }
@@ -51,7 +51,7 @@ class DocumentPermissionsPolicy
     /**
      * Determine whether the user can restore the model.
      */
-    public function restore(User $user, DocumentPermissions $documentPermissions): bool
+    public function restore(User $user, DocumentPermission $documentPermissions): bool
     {
         //
     }
@@ -59,7 +59,7 @@ class DocumentPermissionsPolicy
     /**
      * Determine whether the user can permanently delete the model.
      */
-    public function forceDelete(User $user, DocumentPermissions $documentPermissions): bool
+    public function forceDelete(User $user, DocumentPermission $documentPermissions): bool
     {
         //
     }

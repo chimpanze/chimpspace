@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DocumentBlocksController;
 use App\Http\Controllers\DocumentController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -27,4 +28,9 @@ Route::middleware(['auth:api'])->group(function() {
     Route::patch('documents/{document}', [DocumentController::class, 'update']);
     Route::get('documents/{document}', [DocumentController::class, 'show']);
     Route::delete('documents/{document}', [DocumentController::class, 'destroy']);
+
+    Route::post('documents/blocks', [DocumentBlocksController::class, 'store']);
+    Route::get('documents/blocks/{documentBlock}', [DocumentBlocksController::class, 'show']);
+    Route::patch('documents/blocks/{documentBlock}', [DocumentBlocksController::class, 'update']);
+    Route::delete('documents/blocks/{documentBlock}', [DocumentBlocksController::class, 'destroy']);
 });

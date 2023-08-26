@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class DocumentBlocks extends Model
+class DocumentPermission extends Model
 {
     use HasFactory;
     use HasUlids;
