@@ -16,6 +16,7 @@ return new class extends Migration
             $table->timestamps();
             $table->softDeletesDatetime();
             $table->foreignUlid('document_id');
+            $table->foreignUlid('user_id');
         });
     }
 

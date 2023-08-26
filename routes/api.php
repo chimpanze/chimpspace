@@ -15,9 +15,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+require __DIR__.'/auth.php';
+
 Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('documents', [DocumentController::class, 'index']);
-Route::put('documents', [DocumentController::class, 'store']);
+Route::middleware(['auth:api'])->group(function() {
+    Route::get('documents', [DocumentController::class, 'index']);
+    Route::post('documents', [DocumentController::class, 'store']);
+    Route::patch('documents/{document}', [DocumentController::class, 'update']);
+    Route::get('documents/{document}', [DocumentController::class, 'show']);
+    Route::delete('documents/{document}', [DocumentController::class, 'destroy']);
+});

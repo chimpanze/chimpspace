@@ -21,7 +21,10 @@ class DocumentPolicy
      */
     public function view(User $user, Document $document): bool
     {
-        //
+        if ($document->user_id === $user->ulid) {
+            return true;
+        }
+        return false;
     }
 
     /**
@@ -37,7 +40,10 @@ class DocumentPolicy
      */
     public function update(User $user, Document $document): bool
     {
-        //
+        if ($document->user_id === $user->ulid) {
+            return true;
+        }
+        return false;
     }
 
     /**
@@ -45,7 +51,10 @@ class DocumentPolicy
      */
     public function delete(User $user, Document $document): bool
     {
-        //
+        if ($document->user_id === $user->ulid) {
+            return true;
+        }
+        return false;
     }
 
     /**
@@ -53,7 +62,10 @@ class DocumentPolicy
      */
     public function restore(User $user, Document $document): bool
     {
-        //
+        if ($document->user_id === $user->ulid) {
+            return true;
+        }
+        return false;
     }
 
     /**

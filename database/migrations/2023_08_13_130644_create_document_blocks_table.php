@@ -16,6 +16,7 @@ return new class extends Migration
             $table->timestamps();
             $table->softDeletesDatetime();
             $table->foreignUlid('document_id')->nullable();
+            $table->foreignUlid('user_id');
             $table->unsignedInteger('order')->nullable()->index();
             $table->char('type', '12');
             $table->longText('content');

@@ -6,6 +6,7 @@ use App\Http\Requests\StoreDocumentRequest;
 use App\Http\Requests\UpdateDocumentRequest;
 use App\Models\Document;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
 class DocumentController extends Controller
@@ -15,7 +16,7 @@ class DocumentController extends Controller
      */
     public function index(): JsonResponse
     {
-        $documents = Document::all();
+        $documents = Document::paginate();
         return response()->json($documents);
     }
 
@@ -28,6 +29,7 @@ class DocumentController extends Controller
         $document = new Document;
         $document->title = $values['title'];
         $document->parent_document = $values['parent_document'] ?? null;
+        $document->user_id = auth()->id();
         $document->save();
 
         return response()->json($document);
@@ -36,17 +38,13 @@ class DocumentController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Document $document)
+    public function show(Request $request, Document $document)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Document $document)
-    {
-        //
+        if ($request->user()->can('view', $document)) {
+            return response()->json($document);
+        } else {
+            abort(403);
+        }
     }
 
     /**
@@ -54,14 +52,35 @@ class DocumentController extends Controller
      */
     public function update(UpdateDocumentRequest $request, Document $document)
     {
-        //
+        if ($request->user()->can('update', $document)) {
+            $values = $request->validated();
+
+            if ($values['title']) {
+                $document->title = $values['title'];
+            }
+            if ($values['parent_document'] !== '') {
+                $document->parent_document = $values['parent_document'];
+            }
+
+            $document->save();
+
+            return response()->json($document);
+        } else {
+            abort(403);
+        }
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Document $document)
+    public function destroy(Request $request, Document $document)
     {
-        //
+        if ($request->user()->can('delete', $document)) {
+            $document->delete();
+
+            return response()->noContent();
+        } else {
+            abort(403);
+        }
     }
 }

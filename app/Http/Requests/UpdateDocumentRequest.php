@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class UpdateDocumentRequest extends FormRequest
 {
@@ -11,7 +12,7 @@ class UpdateDocumentRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +23,8 @@ class UpdateDocumentRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'title' => ['string', 'sometimes'],
+            'parent_document' => ['ulid', 'nullable']
         ];
     }
 }

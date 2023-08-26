@@ -8,13 +8,16 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Document extends Model
 {
-    use HasUlids;
+    use HasUlids, SoftDeletes;
 
     protected $fillable = ['title'];
     protected $primaryKey = 'ulid';
+    protected $with = ['documents'];
+    protected $hidden = ['user_id'];
 
     public function parentDocument(): BelongsTo
     {
